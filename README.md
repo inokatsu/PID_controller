@@ -3,7 +3,7 @@
 
 [//]: # (Image References)
 
-[image1]: ./result_movie.mov.gif "Result"
+[image1]: result_movie.gif "Result"
 
 ![alt text][image1]
 
@@ -22,7 +22,7 @@ The coefficients were determined by manual tuning. First, I tuned P parameter to
 
 Here's a [link to my video result](https://youtu.be/NPQNzKVdx4w)
 
-</br>
+
 
 ## Dependencies
 
