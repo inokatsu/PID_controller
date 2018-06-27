@@ -12,8 +12,16 @@
 ## About PID controll
 A PID controller (proportional-integral-derivative controller) is a controll loop feedback mechanism widly used in industrial control systems and a variety of toher applications requiring continuously modulated control.  A PID controller continuously calculates an error value e(t) as the difference between a desired setpoint (SP) and a measured process variable (PV) and applies a correction based on proportional, integral, and derivative terms (denoted P, I, and D respectively) which give the controller its name.
 
-### CTE (Cross Track Error)
+## CTE (Cross Track Error)
 A cross track error is a distance of the vehicle from trajectory. In theory it’s best suited to control the car by steering in proportion to Cross Track Error(CTE).
+
+## The effect of each P, I, D components
+- P : The propotional portion of the controller tries to control the car toward the center line against the cross track error. `Kp` is mulitplied by the CTE to calculate the steering angle. This results in the car overshooting the reference trajectory, then changing course and oscillating. Increasing `Kp` will make the the vehicle to oscillate faster. I settled on a proportional factor of 0.15 for the PID controller.
+
+- I : The integral portion corrects tystemic bias such as steering drift. The integral factor `Ki` is multiplied by sum of all the previous CTE. The steering drift is not an issue in the simulation, so `Ki` was set to small value 0.0001.
+
+- D : The differential portion makes to counteract the proportional trend to overshoot the center line by smoothing the approach to it. It is calculated by multiplying the differential factor `Kd` by the derivative of CTE. The larger `Kd` will make the steerign angle decrese faster as it reaches the reference trajectory and I set it to 5.0.
+
 
 ## How the coefficients were tuned
 The coefficients were determined by manual tuning. First, I tuned P parameter to make the car follow the road. It starts overshooting gradually, so I tuned D parameter to reduce overshooting. The I parameter can help to reduce bias of the car and the coefficient influence a lot so that the small value is set for it.
